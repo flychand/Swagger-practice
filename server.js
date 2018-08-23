@@ -10,6 +10,7 @@ var app= express();
 var url ="mongodb://chandan:pu15352111@ds115592.mlab.com:15592/student"
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
 //CRUD
 //create
 
@@ -28,7 +29,7 @@ app.use(cors());
 
 //app.get('/', (request, response) => response.send('Hello World!'))
 
-/*create record*/
+
 
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs');
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
 });
 
 
-
+/*create record*/
 
 
 app.post('/create', (request, response) => {
