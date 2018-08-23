@@ -54,7 +54,7 @@ app.post('/create', (request, response) => {
   MongoClient.connect(url,{ useNewUrlParser: true }, (error, db) => {
     if(error) throw error;
     var dbo = db.db("student");
-    dbo.collection("products").insert(body, (error, response) => {
+    dbo.collection("stud_info").insert(body, (error, response) => {
       if(error) throw error;
       console.log("record inserted");
       db.close();
@@ -71,7 +71,7 @@ app.get('/show',(request, response) => {
       throw error;
     }
     dbo=db.db("student");
-    dbo.collection("products").find().toArray( (err, result) => {
+    dbo.collection("stud_info").find().toArray( (err, result) => {
       console.log(result);
       response.send(result);
       db.close();
@@ -87,7 +87,7 @@ app.post('/findby',(request, response) => {
       throw error;
     }
     dbo=db.db("student");
-    dbo.collection("products").find({"name":data}).toArray( (err, result) => {
+    dbo.collection("stud_info").find({"name":data}).toArray( (err, result) => {
       console.log(result);
       response.send(result);
       db.close();
@@ -107,7 +107,7 @@ app.delete('/delete',(request, response)=>{
     }
     dbo=db.db("student");
 
-    dbo.collection("products").remove({"name":data});
+    dbo.collection("stud_info").remove({"name":data});
       db.close();
 
   });
@@ -123,7 +123,7 @@ app.delete('/delete/:id',(request, response)=>{
     if(error) throw error;
     dbo=db.db("student");
 
-    dbo.collection("products").remove({"_id": ObjectId(data)});
+    dbo.collection("stud_info").remove({"_id": ObjectId(data)});
       db.close();
 
   });
